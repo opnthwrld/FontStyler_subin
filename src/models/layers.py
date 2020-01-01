@@ -95,10 +95,15 @@ class Decoder_conv(nn.Module):
 
     def forward(self, embedded):
         d1 = self.deconv1(embedded)
+        #print(d1.shape)
         d2 = self.deconv2(d1)
+        #print(d2.shape)
         d3 = self.deconv3(d2)
+        #print(d3.shape)
         d4 = self.deconv4(d3)
+        #print(d4.shape)
         d5 = self.deconv5(d4)
+        #print(d5.shape)
         fake_target = d5
         fake_target = fake_target.squeeze(dim=1)
 
