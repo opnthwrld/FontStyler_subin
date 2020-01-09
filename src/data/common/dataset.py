@@ -189,8 +189,8 @@ class NewFontDataset(torch.utils.data.Dataset):
 # 		return self.train_path, self.val_path
 
 def get_doc2vec():
-	vec_10 = pd.read_csv('./src/data/dataset/kor/doc2vec_10.csv')
-	vec_20 = pd.read_csv('./src/data/dataset/kor/doc2vec_20.csv')
+	vec_10 = pd.read_csv('./src/data/dataset/doc2vec_10.csv')
+	vec_20 = pd.read_csv('./src/data/dataset/doc2vec_20.csv')
 
 	# 불필요한 col 제거
 	del vec_10['Unnamed: 0']
@@ -235,7 +235,7 @@ class KoreanFontDataset(torch.utils.data.Dataset):
 		font_idx = int(filename[0])
 		info = {
 			'font_index': font_idx,
-			'font_doc2vec': self.vec.loc[self.vec.index[font_idx]].tolist(),
+			'font_doc2vec': np.array(self.vec.loc[self.vec.index[font_idx]]),
 			'word_index': int(filename[1])
 		}
 
